@@ -8,6 +8,22 @@ text = re.sub(r'([.,!?])', r' \1 ', text)
 new_word = str()  
 text_frequency_classification = {"words":{}, "Part of Speech":{}}
 
+# Global variables initalisation
+ArticleFrequency = None
+PronounsFrequency = None
+PrepositionFrequency = None
+AdverbFrequency = None
+conjunctionsFrequency = None
+AdverbFrequency = None
+QuantifierFrequency = None
+NegationFrequency = None
+DeterminerFrequency = None
+ComparativeFrequency = None
+ModalVerbFrequency = None
+PossessiveFrequency = None
+VerbFrequency = None
+
+
 def wordFrequency():
     text_data = {}  
     for token in doc: 
@@ -46,27 +62,29 @@ def Pronouns(token):
         "Relative":["who","whom","whose","which","what"],
         "Demonstrative":["this","that","these","those"]
     }
-    PronounsFrequency = {x:{"Pronoun Frequency":0} for x in PronounsList.keys() }
+    global PronounsFrequency
+    if PronounsFrequency == None:
+        PronounsFrequency = {x:{"Pronoun Frequency":0} for x in PronounsList.keys() }
     values = [value for key in PronounsList for value in PronounsList[key]]
     
     if token.text.lower() in values:
         for key in PronounsList:
             if token.text.lower() in PronounsList[key]:
                 PronounsFrequency[key]["Pronoun Frequency"] += 1
-    return PronounsFrequency  
 
 def Articles(token):
     ArticlesList ={
         "Definite":["a","an"],
         "Indefinite":["the"]
     }
-    ArticleFrequency = {x:{"Article Frequency":0} for x in ArticlesList.keys()}
+    global ArticleFrequency 
+    if ArticleFrequency == None:
+        ArticleFrequency = {x:{"Article Frequency":0} for x in ArticlesList.keys()}
     values = [value for key in ArticlesList for value in ArticlesList[key]]
     if token.text.lower() in values:
         for key in ArticlesList:
             if token.text.lower() in ArticlesList[key]:
                 ArticleFrequency[key]["Article Frequency"] += 1
-    return ArticleFrequency
 
 def Prepositions(token):
     PrepositionList = ["about", "above", "across", "after", "against", "along", "among", "around", "at", 
@@ -74,14 +92,20 @@ def Prepositions(token):
                        "during", "except", "for", "from", "in", "inside", "into", "like", "near", "of", "off", "on",
                        "onto", "out", "outside", "over", "past", "since", "through", "throughout", "to", "toward", "under", 
                        "underneath", "until", "up", "upon", "with", "within", "without"]
-    PrepositionFrequency = {"Preposition Frequency":0}
+    
+    global PrepositionFrequency
+    if PrepositionFrequency == None:
+        PrepositionFrequency = {"Preposition Frequency":0}
     if token.text.lower() in PrepositionList:
         PrepositionFrequency["Preposition Frequency"] += 1
 
 def AuxilaryVerbs(token):
     VerbList = ["am", "is", "are", "was", "were", "be", "being", "been", "have", "has", "had", "do", 
                 "does", "did", "will", "would", "shall", "should", "can", "could", "may", "might", "must"]
-    VerbFrequency = {"Frequency":0}
+    
+    global VerbFrequency
+    if VerbFrequency == None:
+        VerbFrequency = {"Frequency":0}
     if token.text.lower() in VerbList:
         VerbFrequency["Frequency"] += 1
 
@@ -91,23 +115,103 @@ def conjunctions(token):
         "Subordinating":["although","because","if","since","though","unless","until","when","where","while"],
 
     }
-    conjunctionsFrequency = {x:{"Conjuction Frequency":0} for x in ConjunctionList.keyx()}
+
+    global conjunctionsFrequency
+    if conjunctionsFrequency == None:
+        conjunctionsFrequency = {x:{"Conjuction Frequency":0} for x in ConjunctionList.keys()}
     values = [value for key in ConjunctionList for value in ConjunctionList[key]]
     if token.text.lower() in values:
         for key in ConjunctionList:
             if token.text.lower() in ConjunctionList[key]:
                 conjunctionsFrequency[key]["Conjunction Frequency"] += 1
-    return conjunctionsFrequency
 
 def Adverbs(token):
     AdverbList = {
         "Intensifiers":["however","therefore","moreover","consequently","furthermore","very","quite","rather","always","never","just"],
         "Heghing":["almost","often","sometimes","seldom","here","there","now","then","meanwhile","thus"]
     }
-    AdverbFrequency = {x:{"Adverb Frequency":0} for x in AdverbList.keys()}
+
+    global AdverbFrequency
+    if AdverbFrequency == None:
+        AdverbFrequency = {x:{"Adverb Frequency":0} for x in AdverbList.keys()}
     values = [value for key in AdverbList for value in AdverbList[key]]
     if token.text.lower() in values:
         for key in AdverbList:
             if token.text.lower() in AdverbList[key]:
                 AdverbFrequency[key]["Conjunction Frequency"] += 1
-    return AdverbFrequency
+
+def Quantifiers(token):
+    QuantifierList = ["all","some","any","few","many","much","several","each","every","both","either","neither"]
+
+    global QuantifierFrequency
+    if QuantifierFrequency == None:
+        QuantifierFrequency = {"Frequency":0}
+    if token.text.lower() in QuantifierList:
+        QuantifierFrequency["Frequency"] += 1
+
+def Negations(token):
+    NegationList = ["no","not","none","neither","nor","never"]
+    global NegationFrequency
+    if NegationFrequency == None:
+        NegationFrequency = {"Frequency":0}
+    if token.text.lower() in NegationList:
+        NegationFrequency["Frequency"] +=1
+
+def Determiners(token):
+    DeterminerList = ["my","your","his","her","its","our","their","this","that","these","those","each","every","some","any","no","many","few","much","several","enough"]
+    global DeterminerFrequency
+    if DeterminerFrequency == None:
+        DeterminerFrequency = {"Frequency":0}
+    if token.text.lower() in DeterminerList:
+        DeterminerFrequency["Frequency"] +=1
+
+def Comparatives(token):
+    ComparativeList = ["than","more","less","most","least","as","such"]
+    global ComparativeFrequency
+    if ComparativeFrequency == None:
+        ComparativeFrequency = {"Frequency":0}
+    if token.text.lower() in ComparativeList:
+        ComparativeFrequency["Frequency"] += 1
+
+def ModalVerbs(token):
+    ModalVerbList = ["can","could","may","might","must","shall","should","will","would"]
+    global ModalVerbFrequency
+    if ModalVerbFrequency == None:
+        ModalVerbFrequency = {"Frequency":0}
+    if token.text.lower() in ModalVerbList:
+        ModalVerbFrequency["Frequency"] += 1
+
+def Possessives(token):
+    PossessiveList = {
+        "Pronousn":["mine","yours","his","hers","ours","theirs"],
+        "Determiners":["my","your","his","her","its","our","their"]
+    }
+    global PossessiveFrequency
+    if PossessiveFrequency == None:
+        PossessiveFrequency = {x:{"Possessive Frequency":0} for x in PossessiveList.keys() }
+    values = [value for key in PossessiveFrequency for value in PossessiveList[key]]
+    if token.text.lower() in values:
+        for key in PossessiveList:
+            if token.text.lower() in PossessiveList[key]:
+                PossessiveFrequency[key]["Possessive Frequency"] += 1
+
+def mainloop():
+    wordFrequency()
+    partOfSpeechFrequency()
+    partOfSpeechClassification()
+    for token in doc:
+        Articles(token)
+        Pronouns(token)
+        Prepositions(token)
+        AuxilaryVerbs(token)
+        conjunctions(token)
+        Adverbs(token)
+        Quantifiers(token)
+        Negations(token)
+        Determiners(token)
+        Comparatives(token)
+        ModalVerbs(token)
+        Possessives(token)
+
+if __name__ == "__main__":
+    mainloop()
