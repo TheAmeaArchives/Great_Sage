@@ -1,11 +1,31 @@
 import spacy  
 import re
-nlp = spacy.load("en_core_web_md")  
 
-text = str(input("Enter a text: ")) + " "  
-doc = nlp(text)
-text = re.sub(r'([.,!?])', r' \1 ', text) 
-new_word = str()  
+nlp = spacy.load("en_core_web_md")  
+# Add a reusable function
+def process_text(input_text):
+    global doc
+    doc = nlp(input_text)
+    mainloop()
+    return {
+        "Pronouns Frequency": PronounsFrequency,
+        "Article Frequency": ArticleFrequency,
+        "Prepositions Frequency": PrepositionFrequency,
+        "Adverbe Frequency": AdverbFrequency,
+        "Conjunction Frequency": conjunctionsFrequency,
+        "Adverb Frequency": AdverbFrequency,
+        "Quantifier Frequency" :QuantifierFrequency,
+        "Negation Frequency":NegationFrequency,
+        "Determiner Frequency":DeterminerFrequency,
+        "Comparative Frequency":ComparativeFrequency,
+        "Modal Verb Frequency":ModalVerbFrequency,
+        "Possesive Frequency":PossessiveFrequency,
+        "Auxilliary Verb Frequency":VerbFrequency
+    }
+  
+
+
+
 text_frequency_classification = {"words":{}, "Part of Speech":{}}
 
 # Global variables initalisation
@@ -118,7 +138,7 @@ def conjunctions(token):
 
     global conjunctionsFrequency
     if conjunctionsFrequency == None:
-        conjunctionsFrequency = {x:{"Conjuction Frequency":0} for x in ConjunctionList.keys()}
+        conjunctionsFrequency = {x:{"Conjunction Frequency":0} for x in ConjunctionList.keys()}
     values = [value for key in ConjunctionList for value in ConjunctionList[key]]
     if token.text.lower() in values:
         for key in ConjunctionList:
@@ -138,7 +158,7 @@ def Adverbs(token):
     if token.text.lower() in values:
         for key in AdverbList:
             if token.text.lower() in AdverbList[key]:
-                AdverbFrequency[key]["Conjunction Frequency"] += 1
+                AdverbFrequency[key]["Adverb Frequency"] += 1
 
 def Quantifiers(token):
     QuantifierList = ["all","some","any","few","many","much","several","each","every","both","either","neither"]
@@ -215,3 +235,4 @@ def mainloop():
 
 if __name__ == "__main__":
     mainloop()
+    
