@@ -26,7 +26,6 @@ Engage with Great Sage in conversations about behavioral and psychological conce
 
 Great Sage relies on the following technologies to deliver its features:
 
-- **`re`** (Regular Expressions): For parsing and processing text data efficiently.
 - **spaCy:** A robust library for natural language processing (NLP), enabling advanced text analysis.
 - **Django:** The web framework used to create a seamless and interactive user experience.
 - **Pillow:** For image processing, particularly in analyzing handwriting samples.
