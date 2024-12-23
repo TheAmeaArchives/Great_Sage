@@ -237,7 +237,7 @@ def mainloop():
             FrequencyDict[key]["Frequency"] *=100/text_length
 
     def SimplePercentage(FrequencyDict:dict):
-        FrequencyDict *=100/text_length
+        FrequencyDict["Frequency"] *=100/text_length
 
     for token in doc:
         Articles(token)
