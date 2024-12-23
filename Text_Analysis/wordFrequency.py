@@ -5,7 +5,9 @@ nlp = spacy.load("en_core_web_md")
 # Add a reusable function
 def process_text(input_text):
     global doc
+    global text_length
     doc = nlp(input_text)
+    text_length = doc.length()
     mainloop()
     return {
         "Pronouns Frequency": PronounsFrequency,
@@ -52,6 +54,9 @@ def wordFrequency():
         else:
             text_data[token.text.lower()] = 1  
 
+    for key in text_data:
+        text_data[key] *=100/text_length 
+
     text_frequency_classification["words"] = text_data
 
 def partOfSpeechFrequency():
@@ -62,6 +67,8 @@ def partOfSpeechFrequency():
         else:
             text_data[token.pos_] = 1 
 
+    for key in text_data:
+        text_data[key] *=100/text_length
     text_frequency_classification["Part of Speech"] = text_data  
 
 def partOfSpeechClassification():
@@ -75,6 +82,9 @@ def partOfSpeechClassification():
                 text_part_of_speech_classification[token.tag_]["words"].append(token.text.lower())
             text_part_of_speech_classification[token.tag_]["Total Size"] +=1
 
+    for key in text_part_of_speech_classification:
+        text_part_of_speech_classification[key]["Total Size"] *=100/text_length
+
 def Pronouns(token):
     PronounsList = {
         "Personal":["i","me","my","mine","we","us","our","ours","you","your","yours","he","him","his","she","her","hers","it","its","they","them","their","theirs"],
@@ -84,13 +94,13 @@ def Pronouns(token):
     }
     global PronounsFrequency
     if PronounsFrequency == None:
-        PronounsFrequency = {x:{"Pronoun Frequency":0} for x in PronounsList.keys() }
+        PronounsFrequency = {x:{"Frequency":0} for x in PronounsList.keys() }
     values = [value for key in PronounsList for value in PronounsList[key]]
     
     if token.text.lower() in values:
         for key in PronounsList:
             if token.text.lower() in PronounsList[key]:
-                PronounsFrequency[key]["Pronoun Frequency"] += 1
+                PronounsFrequency[key]["Frequency"] += 1
 
 def Articles(token):
     ArticlesList ={
@@ -99,12 +109,14 @@ def Articles(token):
     }
     global ArticleFrequency 
     if ArticleFrequency == None:
-        ArticleFrequency = {x:{"Article Frequency":0} for x in ArticlesList.keys()}
+        ArticleFrequency = {x:{"Frequency":0} for x in ArticlesList.keys()}
     values = [value for key in ArticlesList for value in ArticlesList[key]]
     if token.text.lower() in values:
         for key in ArticlesList:
             if token.text.lower() in ArticlesList[key]:
-                ArticleFrequency[key]["Article Frequency"] += 1
+                ArticleFrequency[key]["Frequency"] += 1
+        
+       
 
 def Prepositions(token):
     PrepositionList = ["about", "above", "across", "after", "against", "along", "among", "around", "at", 
@@ -115,9 +127,9 @@ def Prepositions(token):
     
     global PrepositionFrequency
     if PrepositionFrequency == None:
-        PrepositionFrequency = {"Preposition Frequency":0}
+        PrepositionFrequency = {"Frequency":0}
     if token.text.lower() in PrepositionList:
-        PrepositionFrequency["Preposition Frequency"] += 1
+        PrepositionFrequency["Frequency"] += 1
 
 def AuxilaryVerbs(token):
     VerbList = ["am", "is", "are", "was", "were", "be", "being", "been", "have", "has", "had", "do", 
@@ -138,12 +150,12 @@ def conjunctions(token):
 
     global conjunctionsFrequency
     if conjunctionsFrequency == None:
-        conjunctionsFrequency = {x:{"Conjunction Frequency":0} for x in ConjunctionList.keys()}
+        conjunctionsFrequency = {x:{"Frequency":0} for x in ConjunctionList.keys()}
     values = [value for key in ConjunctionList for value in ConjunctionList[key]]
     if token.text.lower() in values:
         for key in ConjunctionList:
             if token.text.lower() in ConjunctionList[key]:
-                conjunctionsFrequency[key]["Conjunction Frequency"] += 1
+                conjunctionsFrequency[key]["Frequency"] += 1
 
 def Adverbs(token):
     AdverbList = {
@@ -153,12 +165,12 @@ def Adverbs(token):
 
     global AdverbFrequency
     if AdverbFrequency == None:
-        AdverbFrequency = {x:{"Adverb Frequency":0} for x in AdverbList.keys()}
+        AdverbFrequency = {x:{"Frequency":0} for x in AdverbList.keys()}
     values = [value for key in AdverbList for value in AdverbList[key]]
     if token.text.lower() in values:
         for key in AdverbList:
             if token.text.lower() in AdverbList[key]:
-                AdverbFrequency[key]["Adverb Frequency"] += 1
+                AdverbFrequency[key]["Frequency"] += 1
 
 def Quantifiers(token):
     QuantifierList = ["all","some","any","few","many","much","several","each","every","both","either","neither"]
@@ -203,22 +215,30 @@ def ModalVerbs(token):
 
 def Possessives(token):
     PossessiveList = {
-        "Pronousn":["mine","yours","his","hers","ours","theirs"],
+        "Pronouns":["mine","yours","his","hers","ours","theirs"],
         "Determiners":["my","your","his","her","its","our","their"]
     }
     global PossessiveFrequency
     if PossessiveFrequency == None:
-        PossessiveFrequency = {x:{"Possessive Frequency":0} for x in PossessiveList.keys() }
+        PossessiveFrequency = {x:{"Frequency":0} for x in PossessiveList.keys() }
     values = [value for key in PossessiveFrequency for value in PossessiveList[key]]
     if token.text.lower() in values:
         for key in PossessiveList:
             if token.text.lower() in PossessiveList[key]:
-                PossessiveFrequency[key]["Possessive Frequency"] += 1
+                PossessiveFrequency[key]["Frequency"] += 1
 
 def mainloop():
     wordFrequency()
     partOfSpeechFrequency()
     partOfSpeechClassification()
+
+    def ComplexPercentage(FrequencyDict:dict):
+        for key in FrequencyDict:
+            FrequencyDict[key]["Frequency"] *=100/text_length
+
+    def SimplePercentage(FrequencyDict:dict):
+        FrequencyDict *=100/text_length
+
     for token in doc:
         Articles(token)
         Pronouns(token)
@@ -232,6 +252,19 @@ def mainloop():
         Comparatives(token)
         ModalVerbs(token)
         Possessives(token)
+
+    SimplePercentage(PrepositionFrequency)
+    SimplePercentage(VerbFrequency)
+    SimplePercentage(QuantifierFrequency)
+    SimplePercentage(NegationFrequency)
+    SimplePercentage(DeterminerFrequency)
+    SimplePercentage(ComparativeFrequency)
+    SimplePercentage(ModalVerbFrequency)
+    ComplexPercentage(PronounsFrequency)
+    ComplexPercentage(ArticleFrequency)
+    ComplexPercentage(conjunctionsFrequency)
+    ComplexPercentage(AdverbFrequency)
+    ComplexPercentage(PossessiveFrequency)
 
 if __name__ == "__main__":
     mainloop()
