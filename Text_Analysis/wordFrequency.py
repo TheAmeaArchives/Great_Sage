@@ -7,7 +7,7 @@ def process_text(input_text):
     global doc
     global text_length
     doc = nlp(input_text)
-    text_length = doc.length()
+    text_length = len(doc)
     mainloop()
     return {
         "Pronouns Frequency": PronounsFrequency,
