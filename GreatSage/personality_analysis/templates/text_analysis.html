@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analysis</title>
+</head>
+<body>
+    <a href="{% url 'dashboard'%}">Home</a>
+    Text analysis in done here
+    <form  method="post">
+        {% csrf_token %}
+        <label for="text">Enter your text here</label>
+        <textarea name="text" id="text" rows="20" cols="50"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
