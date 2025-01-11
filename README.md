@@ -10,7 +10,13 @@ Welcome to **Great Sage**, a modern Socratic tool designed to uncover the essenc
 
 Great Sage evaluates the use of functional words in texts to reveal aspects of an individual’s personality. This feature draws on principles from the book “The Secret Life of Pronouns” to uncover underlying traits and behavioral tendencies.
 
+### ✍️ 2. Handwriting Analysis
 
+Using advanced image processing and analysis, Great Sage can interpret handwriting to infer details about an individual’s personality. Handwriting speaks volumes about the writer, and this feature unlocks those insights.
+
+### 🎵 3. Music Genre Inference
+
+Based on text and conversational inputs, Great Sage can make educated guesses about your favorite genre of music. These inferences add another dimension to understanding your preferences and personality.
 
 ### 💬 4. Behavioral Concept Conversations
 
