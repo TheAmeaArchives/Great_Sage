@@ -11,7 +11,7 @@ from .forms import ImageUploadForm
 
 nlp = spacy.load("en_core_web_md")
 
-openai_api_key = "Put your API key here"
+openai_api_key = "put api key here"
 openai.api_key = openai_api_key
 
 def landing(request):

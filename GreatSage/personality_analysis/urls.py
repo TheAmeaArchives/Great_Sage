@@ -5,6 +5,6 @@ urlpatterns = [
     path("dashboard/", views.dashboard, name="dashboard"),
     path("textAnalysis/", views.text, name="text"),
     path('result/', views.result, name='result'),
-    path('handwritingAnalysis', views.handwriting, name="handwriting"),
+    path('handwritingAnalysis', views.handwriting, name="sound_analysis"),
     path('conversation', views.conversation, name= 'conversation')
 ]

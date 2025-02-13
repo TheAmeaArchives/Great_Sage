@@ -1,19 +1,42 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Text Analysis</title>
+    <link rel="stylesheet" href="{% static 'personality_analysis/css/text_analysis.css'%}">
+    <link rel="stylesheet" href="{% static 'personality_analysis/css/nav.css'%}">
+   
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <a href="{% url 'dashboard'%}">Home</a>
-    Text analysis in done here
-    <form  method="post">
+    <nav class="navbar">
+        <div class="nlogo"><img src="{% static 'personality_analysis/images/logo (1).svg' %}" alt="logo"></div>
+        <ul class="nav-links">
+            <li><a href="{% url 'text'%}">Text Analysis</a></li>
+            <li><a href="{% url 'sound_analysis'%}">Sound Analysis</a></li>
+            <li><a href="{% url 'conversation'%}">Conversation Bot</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <!-- Left Logo -->
+        <div class="logo left-logo">
+          <img src="{% static 'personality_analysis/images/path3.svg'%}" alt="Left Logo">
+        </div>
+    
+        <form  method="post">
         {% csrf_token %}
-        <label for="text">Enter your text here</label>
-        <textarea name="text" id="text" rows="20" cols="50"></textarea>
-        <input type="submit" value="Submit">
-    </form>
+        <div class="text-area">
+        <textarea name="text" id="text" placeholder="Write your the Essay to be Analysed here"></textarea>
+        <input class="submit" type="submit" value="Submit">
+        </div>
+        </form>
+
+        <div class="logo right-logo">
+        <img src="{% static 'personality_analysis/images/path4.svg'%}" alt="Right Logo">
+        </div>
+  </div>
 </body>
 
 </html>
