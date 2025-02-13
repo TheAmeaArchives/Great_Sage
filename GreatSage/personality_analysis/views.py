@@ -91,6 +91,40 @@ def handwriting(request):
         form = ImageUploadForm()
     return render(request, 'handwriting.html', {"form":form})
 
+def sound_analysis(request):
+    if request.method == "POST":
+        # Get the text input from the request
+        text = request.POST.get("text")
+        file_path = Path.cwd () / "personality_analysis"/"Sound analysis spreadsheet.csv"
+        with open(file_path, 'r') as f:
+            reader = csv.reader(f)
+        response = openai.ChatCompletion.create(
+            model = "gpt-4",
+            messages=[
+            {"role": "system", "content": f"I want you to analyse the way of writing of this person based on the information present in {reader} and for each classification system, associate a given musical genre to the person based on the his way of writing"},
+            {"role": "user", "content": str(text)},
+            ]
+            )
+        answer1 = response.choices[0].message.content.strip()
+        response1 = openai.ChatCompletion.create(
+            model = "gpt-4",
+            messages=[
+            {"role": "system", "content": f"I want you to make an educated guess on the person's music taste. Based on the infromation present in {answer1}. After the explanation, you should end in a 'You likely like [here you put the various genres in order]' "},
+                {"role": "user", "content": str(answer1)},
+            ]
+            )
+        answer = response1.choices[0].message.content.strip()
+        return render(request, 'result.html', {'answer': answer})
+    return render(request, 'text_analysis.html')
+    """if request.method == 'POST':
+        user = request.user
+        text = request.POST['writing']
+        TextAnalysis.objects.create(
+            user = user,
+            text = text,
+        )
+        return redirect('result')
+    return render(request, 'text_analysis.html')"""
 
 
 def ask_openai(message):

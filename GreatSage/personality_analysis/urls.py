@@ -6,5 +6,6 @@ urlpatterns = [
     path("textAnalysis/", views.text, name="text"),
     path('result/', views.result, name='result'),
     path('handwritingAnalysis', views.handwriting, name="handwriting"),
+    path('soundtrack/', views.sound_analysis, name= 'soundtrack'),
     path('conversation', views.conversation, name= 'conversation')
 ]

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TextAnalysis, HandwritingAnalysis,Chat
+from .models import TextAnalysis, HandwritingAnalysis,Chat, SoundtrackAnalysis
 # Register your models here.
 
 @admin.register(TextAnalysis)
@@ -13,3 +13,7 @@ class HandwritingAnalysisAdmin(admin.ModelAdmin):
 @admin.register(Chat)
 class ChatAdmin(admin.ModelAdmin):
     list_display = ("user","message","response","created_at")
+
+@admin.register(SoundtrackAnalysis)
+class SoundAnalysisAdmin(admin.ModelAdmin):
+    list_display=("user", "sound_text", "created_at", "results")
