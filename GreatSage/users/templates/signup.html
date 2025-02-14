@@ -1,0 +1,41 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registrations</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'users/css/signup.css'%}">
+    </head>
+    <body>
+      <div class="container">
+        <h1>Registrations</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="user">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="pass">
+            <label for="password1">Password</label>
+            <input type="password" name="password1" id="password1" placeholder="Password"  required>
+            </div>
+           <div class="advice">
+             <ul>
+                <li>At least 8 characters long</li>
+                <li>Contains both uppercase and lowercase letters</li>
+                <li>Includes at least one number</li>
+                <li>Has at least one special character (e.g., @, #, $)</li>
+            </ul>
+           </div>
+           <div class="confirm-pass">
+            <label for="password2">Confirme Password</label>
+            <input type="password" name="password2" id="password2" placeholder="Confirme Password" required>
+           </div>
+           <div class="submit">
+              <button type="submit">Submit</button>
+           </div>
+        </form>
+      </div>
+    </body>
+</html>

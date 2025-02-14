@@ -24,3 +24,12 @@ class Chat(models.Model):
     message = models.TextField()
     response = models.TextField()
     created_at =  models.DateTimeField(auto_now_add=True)
+
+class SoundtrackAnalysis(models.Model):
+    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    sound_text = models.TextField()
+    created_at =  models.DateTimeField(auto_now_add=True)
+    results = models.JSONField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user} soundtrack"
