@@ -3,22 +3,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Analysis Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'personality_analysis/css/result.css'%}">
+    <link rel="stylesheet" href="{% static 'personality_analysis/css/nav.css'%}">
 </head>
 <body>
-    <h1>Text Analysis Result</h1>
+    <nav class="navbar">
+        <div class="nlogo"><img src="{% static 'personality_analysis/images/logo (1).svg' %}" alt="logo"></div>
+        <ul class="nav-links">
+            <li><a href="{% url 'text'%}">Text Analysis</a></li>
+            <li><a href="{% url 'conversation'%}">Conversation Bot</a></li>
+            <li><a  href="{% url 'logouts'%}"> <div class="red-bot">Logout</div></a>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="text">
+            <h1>Text Analysis</h1>
+            <hr>
+            <br>
+            <p>{{ answer|safe }}</p>
+        </div>
+        <div class="sound">
+            <h1>Sound Analysis</h1>
+            <hr>
+            <br>
+            {{ song|safe }}
 
-    <hr>
-    <hr>
-    <p>{{ answer }}</p>
-<hr>
-<hr>
-<h1>Song Analysis Result </h1>
-<hr>
-<hr>
-{{ song }}
-<hr>
-<hr>
-
+        </div>
+    </div>
 </body>
 </html>
