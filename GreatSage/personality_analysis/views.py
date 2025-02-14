@@ -8,10 +8,18 @@ from pathlib import Path
 import spacy
 from . import wordFrequency2
 from .forms import ImageUploadForm
+<<<<<<< HEAD
 
 nlp = spacy.load("en_core_web_md")
 
 openai_api_key = "add the API key here"
+=======
+import markdown
+
+nlp = spacy.load("en_core_web_md")
+
+openai_api_key = "Put your api key here"
+>>>>>>> 4fa089f (full)
 openai.api_key = openai_api_key
 
 
@@ -20,7 +28,11 @@ def dashboard(request):
 
 def text(request):
     if request.method == "POST":
+<<<<<<< HEAD
         print("okay")
+=======
+
+>>>>>>> 4fa089f (full)
         # Get the text input from the request
         wordFrequency2.nlp = nlp
         text = wordFrequency2.process_text(request.POST.get("text"))
@@ -38,11 +50,19 @@ def text(request):
         response1 = openai.ChatCompletion.create(
             model = "gpt-4",
             messages=[
+<<<<<<< HEAD
             {"role": "system", "content": f"I want you to make an essay presenting the person's qualities and flaws in a balanced manner. In the essay, do not make reference to his frequency usage of function words just present the qualities and flaws in a very beautiful and appealing manner. Adress the message in the second person"},
                 {"role": "user", "content": str(answer1)},
             ]
             )
         answer = response1.choices[0].message.content.strip()
+=======
+            {"role": "system", "content": f"I want you to make boulet points(in a markdown syntax) of the person's qualities and flaws in a balanced manner. In the boulet points, do not make reference to his frequency usage of function words just present the qualities and flaws in a very beautiful and appealing manner. Adress the message in the second person"},
+                {"role": "user", "content": str(answer1)},
+            ]
+            )
+        answer = markdown.markdown(response1.choices[0].message.content.strip())
+>>>>>>> 4fa089f (full)
         text = request.POST.get("text")
         file_path = Path.cwd () / "personality_analysis"/"Sound analysis spreadsheet.csv"
         with open(file_path, 'r') as f:
@@ -58,6 +78,7 @@ def text(request):
         response1 = openai.ChatCompletion.create(
             model = "gpt-4",
             messages=[
+<<<<<<< HEAD
             {"role": "system", "content": f"I want you to make an educated guess on the person's music taste. Based on the information present in {answer1}. After the explanation, you should end in a 'You likely like [here you put the various genres in order]' "},
                 {"role": "user", "content": str(song1)},
             ]
@@ -66,6 +87,14 @@ def text(request):
         return render(request, 'result.html', {'answer': answer, 'song': song})
     else:
         print("nope")
+=======
+            {"role": "system", "content": f"I want you to make an educated guess on the person's music taste in boulet points(in a markdown format). Based on the information present in {answer1}.  Adress the message in the second person"},
+                {"role": "user", "content": str(song1)},
+            ]
+            )
+        song = markdown.markdown(response1.choices[0].message.content.strip())
+        return render(request, 'result.html', {'answer': answer, 'song': song})
+>>>>>>> 4fa089f (full)
     return render(request, 'text_analysis.html')
 
 def result(request):
