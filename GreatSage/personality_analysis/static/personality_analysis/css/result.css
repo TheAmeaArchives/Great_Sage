@@ -17,7 +17,7 @@
 
 .sound{
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
-    flex-grow: 1;
+    flex-grow: 0;
     margin-left: 5%;
     padding: 30px;
 }
