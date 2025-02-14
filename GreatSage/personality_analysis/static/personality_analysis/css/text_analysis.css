@@ -15,6 +15,16 @@
     position: relative; 
   }
 
+.red-bot{
+    background-color: red;
+    color: black;
+    width: 110px;
+    text-align: center;
+    height: 25px;
+    padding-top: 3px;
+    border-radius: 10px;
+  }
+
   .container {
     display: flex;
     align-items: center;

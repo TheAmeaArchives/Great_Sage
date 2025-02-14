@@ -11,20 +11,16 @@ from .forms import ImageUploadForm
 
 nlp = spacy.load("en_core_web_md")
 
-openai_api_key = "put api key here"
+openai_api_key = "add the API key here"
 openai.api_key = openai_api_key
 
-def landing(request):
-    if request.user.is_authenticated:
-        return render(request, "dashboard.html")
-    else:
-        return render(request, "landing_page.html")
-    
+
 def dashboard(request):
     return render(request, "dashboard.html")
 
 def text(request):
     if request.method == "POST":
+        print("okay")
         # Get the text input from the request
         wordFrequency2.nlp = nlp
         text = wordFrequency2.process_text(request.POST.get("text"))
@@ -47,58 +43,96 @@ def text(request):
             ]
             )
         answer = response1.choices[0].message.content.strip()
-        return render(request, 'result.html', {'answer': answer})
+        text = request.POST.get("text")
+        file_path = Path.cwd () / "personality_analysis"/"Sound analysis spreadsheet.csv"
+        with open(file_path, 'r') as f:
+            reader = csv.reader(f)
+        response = openai.ChatCompletion.create(
+            model = "gpt-4",
+            messages=[
+            {"role": "system", "content": f"I want you to analyse the way of writing of this person based on the information present in {reader} and for each classification system, associate a given musical genre to the person based on the his way of writing"},
+            {"role": "user", "content": str(text)},
+            ]
+            )
+        song1 = response.choices[0].message.content.strip()
+        response1 = openai.ChatCompletion.create(
+            model = "gpt-4",
+            messages=[
+            {"role": "system", "content": f"I want you to make an educated guess on the person's music taste. Based on the information present in {answer1}. After the explanation, you should end in a 'You likely like [here you put the various genres in order]' "},
+                {"role": "user", "content": str(song1)},
+            ]
+            )
+        song = response1.choices[0].message.content.strip()
+        return render(request, 'result.html', {'answer': answer, 'song': song})
+    else:
+        print("nope")
     return render(request, 'text_analysis.html')
-    """if request.method == 'POST':
-        user = request.user
-        text = request.POST['writing']
-        TextAnalysis.objects.create(
-            user = user,
-            text = text,
-        )
-        return redirect('result')
-    return render(request, 'text_analysis.html')"""
 
 def result(request):
     return render(request, 'result.html')
 
-def handwriting(request):   
-    if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            user_image = form.save()
+# def handwriting(request):   
+#     if request.method == 'POST':
+#         form = ImageUploadForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             user_image = form.save()
         
-            image_url = user_image.handwriting_image.url
+#             image_url = user_image.handwriting_image.url
 
-            response = openai.ChatCompletion.create(
-                model="gpt-4", 
-                messages=[
-                    {
-                        "role": "user",
-                        "content": "What's in this image?"
-                    },
-                    {
-                        "role": "user",
-                        "content": f"Here's the image URL: {image_url}"
-                    }
-                ],
-                max_tokens=300
-            )
+#             response = openai.ChatCompletion.create(
+#                 model="gpt-4", 
+#                 messages=[
+#                     {
+#                         "role": "user",
+#                         "content": "What's in this image?"
+#                     },
+#                     {
+#                         "role": "user",
+#                         "content": f"Here's the image URL: {image_url}"
+#                     }
+#                 ],
+#                 max_tokens=300
+#             )
 
-            answer = response.choices[0].message['content']
-            return render(request, 'result.html', {'answer': answer})
-    else:
-        form = ImageUploadForm()
-    return render(request, 'handwriting.html', {"form":form})
+#             answer = response.choices[0].message['content']
+#             return render(request, 'result.html', {'answer': answer})
+#     else:
+#         form = ImageUploadForm()
+#     return render(request, 'handwriting.html', {"form":form})
+
+# def sound_analysis(request):
+#     if request.method == "POST":
+#         # Get the text input from the request
+#         text = request.POST.get("text")
+#         file_path = Path.cwd () / "personality_analysis"/"Sound analysis spreadsheet.csv"
+#         with open(file_path, 'r') as f:
+#             reader = csv.reader(f)
+#         response = openai.ChatCompletion.create(
+#             model = "gpt-4",
+#             messages=[
+#             {"role": "system", "content": f"I want you to analyse the way of writing of this person based on the information present in {reader} and for each classification system, associate a given musical genre to the person based on the his way of writing"},
+#             {"role": "user", "content": str(text)},
+#             ]
+#             )
+#         answer1 = response.choices[0].message.content.strip()
+#         response1 = openai.ChatCompletion.create(
+#             model = "gpt-4",
+#             messages=[
+#             {"role": "system", "content": f"I want you to make an educated guess on the person's music taste. Based on the information present in {answer1}. After the explanation, you should end in a 'You likely like [here you put the various genres in order]' "},
+#                 {"role": "user", "content": str(answer1)},
+#             ]
+#             )
+#         answer = response1.choices[0].message.content.strip()
+#         return render(request, 'result.html', {'answer': answer})
+#     return render(request, 'sound_analysis.html')
 
 
 
 def ask_openai(message):
-    #This function gives us the answer from the openai API
     response = openai.ChatCompletion.create(
         model = "gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are engage in conversations relating behavioural concepts."},
+            {"role": "system", "content": "You are Great Sage, an advanced conversational AI specialized in behavioral and psychological concepts. Engage the user in interactive discussions that help them explore their personality traits, thought processes, and behavioral patterns. Provide insightful, engaging, and thought-provoking responses, similar to a modern ChatGPT experience. Ask follow-up questions, suggest psychological theories or frameworks when relevant, and encourage self-reflection."},
             {"role": "user", "content": message},
         ]
     )

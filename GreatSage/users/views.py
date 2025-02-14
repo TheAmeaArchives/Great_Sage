@@ -9,7 +9,7 @@ def index(request):
     if not request.user.is_authenticated:
         print("not authenticated")
         return redirect("logins") 
-    return redirect("landing")
+    return redirect("text")
 
 def logins(request):
    
@@ -19,11 +19,11 @@ def logins(request):
         user = authenticate(request.POST, username= username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("landing")
+            return redirect("text")
         else:
             form = AuthenticationForm()
-            return render(request, "users/logins.html", {'message':'login'})
-    return render(request, "users/logins.html", )
+            return render(request, "logins.html", {'message':'login'})
+    return render(request, "logins.html", )
 
 def logouts(request):
     logout(request)
@@ -38,5 +38,5 @@ def signup(request):
     else:
         form = UserCreationForm()
         
-    return render(request, "users/signup.html", {"form": form})
+    return render(request, "signup.html", {"form": form})
         
