@@ -1,0 +1,248 @@
+[33mcommit bd80079bb5030de0338a227b08a5356a97766716[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Sat Feb 15 00:57:04 2025 +0100
+
+    Removed cached __pycache__ directory
+
+[33mcommit 0f3bbe7e699ecea1ebb1a0168051417d91880531[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Fri Feb 14 21:54:19 2025 +0100
+
+    Your commit message
+
+[33mcommit a07690e011cbbefdabef8db89ee8c55225bbf026[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Fri Feb 14 21:40:24 2025 +0100
+
+    last
+
+[33mcommit bea84a7e30a71d8b3c418995d9099c8268225284[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Fri Feb 14 21:23:13 2025 +0100
+
+    full
+
+[33mcommit 6bbaaa697ef2886a6eed715d0b14b8b2e529c374[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Fri Feb 14 21:16:32 2025 +0100
+
+    Removed secret from views.py
+
+[33mcommit 78276b4a792ca61668537eb6bcae284ae785ee8d[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Fri Feb 14 21:07:04 2025 +0100
+
+    Full app completed
+
+[33mcommit 9b16e48987d0cac684dfa837cb2202fbdd5396a8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Fri Feb 14 19:13:43 2025 +0100
+
+    more on frontend
+
+[33mcommit 3b3f6d271b3086e3d2100b1746c4799e69deea60[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Thu Feb 13 19:48:50 2025 +0100
+
+    frontend added
+
+[33mcommit 3adc7aeb3992e2db7949c1b54430a8f0477f2826[m
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Tue Jan 28 08:34:21 2025 +0100
+
+    Delete GreatSage/media directory
+
+[33mcommit 6cee335420c1e97425a09d8266f5843df4ce02d5[m
+Author: Remy Christophe <tuyishimechristophe84@gmail.com>
+Date:   Sat Jan 11 19:06:52 2025 +0100
+
+    Update README.md
+
+[33mcommit c88000ea53fbc19009e22348b8289077a4d80dbf[m
+Author: Remy Christophe <tuyishimechristophe84@gmail.com>
+Date:   Sat Jan 11 19:06:29 2025 +0100
+
+    Update README.md
+
+[33mcommit ed2491de25c09f3c6ed7a5126af57c2ca0af9643[m
+Author: Remy Christophe <tuyishimechristophe84@gmail.com>
+Date:   Sat Jan 11 19:01:23 2025 +0100
+
+    Update README.md
+
+[33mcommit 180cfb9a18713ebd72e0692a296e58ac2eb29a3c[m
+Author: Remy Christophe <tuyishimechristophe84@gmail.com>
+Date:   Tue Dec 31 00:03:43 2024 +0100
+
+    Update requirements.txt
+
+[33mcommit b4a7ad003767149a195ddf4a0b28d4cca825b6ed[m
+Merge: 3f25e4b 0406ad1
+Author: Remy Christophe <tuyishimechristophe84@gmail.com>
+Date:   Mon Dec 30 19:41:26 2024 +0100
+
+    Merge pull request #10 from TheAmeaArchives/tuyi-branch
+    
+    Tuyi branch
+
+[33mcommit 0406ad1fc06507572dbe8e98b4f62716b1ea9f62[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Mon Dec 30 19:40:38 2024 +0100
+
+    small modifications on the login page
+
+[33mcommit 186b8433f6a42922c66708628c7474ce73ee65e4[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Mon Dec 30 19:33:59 2024 +0100
+
+    registration added
+
+[33mcommit 69e4199049594a4707fc35842619161daf5c7aae[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Wed Dec 25 21:03:04 2024 +0100
+
+    remove text analysis doc
+
+[33mcommit 3f25e4b1f1001d6d30503be1c778749044284d71[m
+Merge: 6faf143 9631449
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Wed Dec 25 21:01:33 2024 +0100
+
+    Merge pull request #9 from TheAmeaArchives/tuyi-branch
+    
+    This is the Beta Backend of great_sage
+
+[33mcommit 963144998d5bc6cd5f0e2148022318f6bd0165c9[m
+Author: RemyCodes0 <tuyishimechristophe84@gmail.com>
+Date:   Wed Dec 25 20:59:20 2024 +0100
+
+    This is the Beta Backend of great_sage
+
+[33mcommit 6faf14372e65163437d05e4c255533b76867ac86[m
+Author: DaBe23 <davidberosy05@gmail.com>
+Date:   Mon Dec 23 22:01:35 2024 +0100
+
+    Frequency issue in simple percentage function resolved
+
+[33mcommit 0f3b15974a1be910b156257e392dc028a3788375[m
+Author: DaBe23 <davidberosy05@gmail.com>
+Date:   Mon Dec 23 21:57:27 2024 +0100
+
+    length issue resolved
+
+[33mcommit 973ce75e106c47de4779bc8c57da8ca8785a3d46[m
+Author: DaBe23 <davidberosy05@gmail.com>
+Date:   Mon Dec 23 21:51:33 2024 +0100
+
+    Expressing Frequencies as percentages
+
+[33mcommit cd76086cf592963806053e40d6fc46dc79722ec2[m
+Author: RemyCodes0 <140235814+RemyCodes0@users.noreply.github.com>
+Date:   Tue Dec 17 08:01:57 2024 +0100
+
+    Update README.md
+
+[33mcommit 75f391fa0f112204ccf65749ddada307506bf0be[m
+Merge: 65947e7 bc293e0
+Author: RemyCodes0 <140235814+RemyCodes0@users.noreply.github.com>
+Date:   Tue Dec 17 07:56:43 2024 +0100
+
+    Merge pull request #8 from TheAmeaArchives/tuyi-branch
+    
+    adding the requirements.txt
+
+[33mcommit bc293e036e1f0d9548ae4b8417d6e299ba8e83b8[m
+Author: RemyCode0 <tuyishimechristophe84@gmail.com>
+Date:   Tue Dec 17 07:55:38 2024 +0100
+
+    adding the requirements.txt
+
+[33mcommit 65947e7f7558adbdf3b427809b0a6fd6c6f07f72[m
+Author: RemyCodes0 <140235814+RemyCodes0@users.noreply.github.com>
+Date:   Tue Dec 17 07:49:11 2024 +0100
+
+    Update README.md
+
+[33mcommit 087b93a97def6c09c53f50a4da5e7ba7738a2ec7[m
+Merge: f8f2d09 a687ae6
+Author: RemyCodes0 <140235814+RemyCodes0@users.noreply.github.com>
+Date:   Tue Dec 17 06:51:16 2024 +0100
+
+    Merge pull request #7 from TheAmeaArchives/tuyi-branch
+    
+    Wordfrequency optimisation for module operations
+
+[33mcommit a687ae64ef6e376e104a0b477f06e6df5edc094f[m
+Author: RemyCode0 <tuyishimechristophe84@gmail.com>
+Date:   Tue Dec 17 06:43:43 2024 +0100
+
+    Wordfrequency optimisation for module operations
+
+[33mcommit f8f2d09423aa334c0fd30aa1632df4528ad0e49b[m
+Author: DaBe23 <davidberosy05@gmail.com>
+Date:   Sat Dec 14 09:16:18 2024 +0100
+
+    Implement frequency count main function
+
+[33mcommit f8366f52ab7eae4a386e85aa98ca050f4e3cd056[m
+Author: DaBe23 <davidberosy05@gmail.com>
+Date:   Wed Dec 11 20:06:43 2024 +0100
+
+    Added specific word type frequency count functions
+
+[33mcommit 932d5ce343895553725935409d66ddb21860b73c[m
+Merge: 35dddc6 3ce71e0
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Sat Sep 28 16:53:29 2024 +0200
+
+    Merge pull request #6 from TheAmeaArchives/DaBe23/issue1
+    
+    Puncuation issue resolved
+
+[33mcommit 3ce71e0e875d7ecfeacd7b3aee3af1d21e8911eb[m[33m ([m[1;31morigin/DaBe23/issue1[m[33m)[m
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Sat Sep 28 16:52:24 2024 +0200
+
+    Puncuation issue resolved
+
+[33mcommit 35dddc6a809ad90373f39a95469eab1d9c58cd7a[m
+Merge: 7bf806e 823ecc1
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Sat Sep 28 15:37:47 2024 +0200
+
+    Merge pull request #5 from TheAmeaArchives/DaBe23/issue1
+    
+    Udated README file
+
+[33mcommit 823ecc1d1f9005213a31de7dbbae187076c60111[m
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Sat Sep 28 15:37:02 2024 +0200
+
+    Udated README file
+
+[33mcommit 7bf806e1e22470c26902b89505fa0880a88aae9b[m
+Merge: 4a2f08f c3f399d
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Sat Sep 28 07:58:53 2024 +0200
+
+    Merge pull request #4 from TheAmeaArchives/DaBe23/issue1
+    
+    Implementation of classifier and word counter
+
+[33mcommit c3f399d03c13b93af4cb2db72712d741d615871b[m
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Sat Sep 28 07:53:47 2024 +0200
+
+    Implementation of classifier and word counter
+
+[33mcommit 4a2f08f48a2d26afbb5283ef5a0a86905198ff1d[m
+Author: Your GitHub Username <your-email@example.com>
+Date:   Fri Sep 27 16:59:57 2024 +0200
+
+    Addition of the wordFrequency program
+
+[33mcommit b420f65ea72eb3c365ada84bd8e524d71868d9ef[m
+Author: DaBe23 <146100041+DaBe23@users.noreply.github.com>
+Date:   Fri Sep 27 16:15:31 2024 +0200
+
+    Initial commit
