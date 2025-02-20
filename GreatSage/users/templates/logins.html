@@ -14,20 +14,31 @@
             <img class="img" src="{% static 'personality_analysis/images/logo (1).svg'%}" alt="logo">
         </div>
         <!----------------->
+      
+        {% if message %}
+        <div class="notice">
+                <h4>If you have not created an account, please create one.</h4>
+        </div>
+             {% endif %}
         <div class="inputs">
-            <div class="notice">
                 <form method="POST">
                 {% csrf_token %}
-                {% if message %}
-                <h4>If you have not created an account, please create one.</h4>
-                {% endif %} 
-            </div>
-                    <label>Username</label>
+                <div class="content-text">
+                    <div class="label">
+                        Username<span style="color: red;">*</span>
+                    </div>
                     <input type="text" class="text" name="username" placeholder="Username">
-                    <label >Password</label>
+                </div>
+                <div class="content-pass">
+                    <div class="lable">
+                        Password<span style="color: red;">*</span>
+                    </div>
                     <input type="password" class="pass" name="password"   placeholder="Password">
-
-                  <button class="submit" type="submit" >Login</button>  
+                </div>
+                <div class="content-submit">
+                    <button class="submit" type="submit" >Login</button>  
+                </div>
+                  
             </form>
         </div>
         <!-- ////// -->
