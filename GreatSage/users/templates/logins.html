@@ -8,13 +8,15 @@
     <link rel="icon" type="image/x-icon" href="{% static 'personality_analysis/images/favicon.ico' %}">
 </head>
 <body>
+    <div class="back">
+        <img class="logs" src="{% static 'personality_analysis/images/amea2.svg'%}" alt="logo">
+    </div>
     <div class="container">
         <!--/////////-->
         <div class="image">
             <img class="img" src="{% static 'personality_analysis/images/logo (1).svg'%}" alt="logo">
         </div>
         <!----------------->
-      
         {% if message %}
         <div class="notice">
                 <h4>If you have not created an account, please create one.</h4>
@@ -24,7 +26,7 @@
                 <form method="POST">
                 {% csrf_token %}
                 <div class="content-text">
-                    <div class="label">
+                    <div class="lable">
                         Username<span style="color: red;">*</span>
                     </div>
                     <input type="text" class="text" name="username" placeholder="Username">
