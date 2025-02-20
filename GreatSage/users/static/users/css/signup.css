@@ -18,7 +18,7 @@ hr{
     border-style: solid;
 }
 .image{
-    width: 130px;
+    width: 110px;
     margin-top: 20px ;
     flex-grow: 1;
     background-color: white;
@@ -27,10 +27,8 @@ hr{
 }
 
 .label{
-    margin-top: 10px;
     text-align: start;
     margin-left: 19px;
-    margin-bottom: 5px;
 }
 
 .img{
