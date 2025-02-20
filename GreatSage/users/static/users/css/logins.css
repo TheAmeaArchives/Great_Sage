@@ -1,6 +1,7 @@
 .container{
+    font-family: Arial, Helvetica, sans-serif;
     position: absolute;
-    top: 50%;
+    top:58%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
@@ -15,13 +16,25 @@
 }
 
 .image{
-    margin-top: 15px ;
+    width: 110px;
+    margin-top: 5px ;
     flex-grow: 1;
+    transform: translateY(-50px);
+    background-color: white;
+    border-radius: 230px; 
+    border-color: red;
+    border-style: dashed;
+    
+
 }
 
 .img{
-    width:130px;
-    border-radius: 100px;
+    width:115px;
+    border-radius: 300px;
+    position: relative;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
 }
 
 .sign{
