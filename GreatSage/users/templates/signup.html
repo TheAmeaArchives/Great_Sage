@@ -10,27 +10,39 @@
     </head>
     <body>
       <div class="container">
-        <h1>Registrations</h1>
+        <div class="image">
+          <img class="img" src="{% static 'personality_analysis/images/logo (1).svg'%}" alt="logo">
+        </div>
         <form method="POST">
             {% csrf_token %}
             <div class="user">
-            <label for="username">Username</label>
+              <div class="label">
+                <label for="username">Username<span style="color: red;">*</span></label>
+              </div>
             <input type="text" name="username" id="username" placeholder="Username" required>
             </div>
             <div class="pass">
-            <label for="password1">Password</label>
+              <div class="label">
+                <label for="password1">Password<span style="color: red;">*</span></label>
+              </div>
             <input type="password" name="password1" id="password1" placeholder="Password"  required>
             </div>
            <div class="advice">
+            
              <ul>
-                <li>At least 8 characters long</li>
+              The password should:
+              <hr>
+                <li>Have at least 8 characters</li>
                 <li>Contains both uppercase and lowercase letters</li>
-                <li>Includes at least one number</li>
-                <li>Has at least one special character (e.g., @, #, $)</li>
+                <li>Include at least one number</li>
+                <li>Have at least one special character (e.g., @, #, $)</li>
+                <hr>
             </ul>
            </div>
            <div class="confirm-pass">
-            <label for="password2">Confirme Password</label>
+            <div class="label">
+              <label for="password2">Confirme Password<span style="color: red;">*</span></label>
+            </div>
             <input type="password" name="password2" id="password2" placeholder="Confirme Password" required>
            </div>
            <div class="submit">

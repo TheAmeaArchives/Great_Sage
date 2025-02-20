@@ -51,7 +51,6 @@
 
 .img{
     width:115px;
-    border-radius: 100px;
     position: relative;
     top: 50%;
     left: 54%;
@@ -92,7 +91,7 @@ form{
     width: 100%; 
     border-color: #ff0000;
     border-style: solid;
-    
+    border-width: 1px;
 }   
 
 .content-text,
@@ -125,7 +124,7 @@ form{
 }
 
 .submit:hover{
-    background-color: #a00505;
+    background-color: #b90808;
 }
 
 a{
@@ -144,3 +143,10 @@ a:hover{
     height: -30px;
     margin: 40px;
 }
+
+input::placeholder {
+    color: gray;
+    font-size: 14px;
+    opacity: 0.7;
+    padding-left: 5px; 
+  }
