@@ -9,10 +9,11 @@ import spacy
 from . import wordFrequency2
 from .forms import ImageUploadForm
 import markdown
+from django.conf import settings
 
 nlp = spacy.load("en_core_web_md")
 
-openai_api_key = "put your api key herre"
+openai_api_key = settings.OPENAI_API_KEY 
 openai.api_key = openai_api_key
 
 
