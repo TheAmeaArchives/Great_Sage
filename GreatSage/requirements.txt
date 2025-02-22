@@ -4,3 +4,4 @@ spacy==3.7.6
 openai==0.28.0
 gunicorn
 markdown
+python-dotenv
