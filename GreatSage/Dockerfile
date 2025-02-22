@@ -14,6 +14,9 @@ RUN python -m spacy download en_core_web_md
 # Copy the Django app into the container
 COPY . .
 
+# specify build-time environment variables
+ARG CSRF_TRUSTED_ORIGINS
+
 # create a new database and apply migrations
 RUN python manage.py migrate
 
