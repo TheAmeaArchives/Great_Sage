@@ -20,93 +20,91 @@
         <li ><a  href="{% url 'logouts'%}"> <div class="red-bot">Logout</div></a>
     </ul>
   </nav>
+  <header class="chat-header">
 
-  <div class="logo left-logo">
-    <img src="{% static 'personality_analysis/images/path3.svg' %}" alt="Left Logo">
-  </div>
-
-  <div class="content">
-    <div class="content1">
-      <div class="back">
-        <img src="{% static 'personality_analysis/images/ameaarchives.svg' %}" alt="">
-      </div>
-      <p style="color: white;">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, excepturi. Quisquam nihil nam explicabo dicta quos unde recusandae, ex minima delectus hic optio amet inventore magni sequi aut quo corrupti.
-      </p>
-
-      <div class="text">
-        <div class="conv"> 
-          {% for chat in chats %}
-            {% if chat.user == request.user %}
-              <div class="user">
-                     
-                {{ chat.message }}
-              </div>
-
-              <div class="bot">
-             
-                {{ chat.response }}
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="text">
-        <div class="text-input">
-          <form class="message-form" method="post">
-            {% csrf_token %}
-            <input type="text" class="text-inp" name="message" placeholder="Tell me more about you..." required>
-        </div>
-        <div class="text-submit">
-          <button type="submit" class="text-sub"><img class="img-sub" src="{% static 'personality_analysis/images/send.jpg'%}" alt=""></button>
-        </div>
-          </form>
-      </div>
+    <div class="logo">
+        <a href="#"><b>The Amea Archives</b></a>
     </div>
-  </div>
+    <div class="others">
+         <a href="#">Text Analysis</a>
+    <a href="#">Conversation Bot</a>
+<button class="logout">Logout</button>
+    </div>
 
-  <div class="logo right-logo">
-    <img src="{% static 'personality_analysis/images/path4.svg' %}" alt="Right Logo">
-  </div>
+</header>
+<div class="container">
+<div class="head">
+    <b>Chat</b>
+</div>
+<main class="chat-container">
+    <div class="chat-box">
+      {% for chat in chats %}
+      {% if chat.user == request.user %}
+      <div class="user-chat">
+          {{ chat.message|safe }}
+        </div>
+        <div class="ai-chat">
+          {{ chat.response|safe }}
+        </div>
+      
+        {% endif %}
+        {% endfor %}
+    </div>
+</main>
+<footer class="chat-input">
+  <form method="post">
+    
+      {% csrf_token %}
+      <input type="text" placeholder="Tell me more about you...">
+      <button class="send">&#10148;</button>
+ 
+
+  </form>
+</footer>
+</div>
+  <!-- ///////////////////////////////////////////////////////////// -->
 
   <script>
-    const messageForm = document.querySelector('.message-form');
-    const messageInput = document.querySelector('.text-inp');
-    const messagesContainer = document.querySelector('.conv');
+    const messageForm = document.querySelector('.chat-input form'); // Corrected form selector
+    const messageInput = document.querySelector('.chat-input input[type="text"]'); // Corrected input selector
+    const messagesContainer = document.querySelector('.chat-box'); // Corrected messages container selector
 
     messageForm.addEventListener('submit', (event) => {
-      event.preventDefault();
+        event.preventDefault();
 
-      const message = messageInput.value.trim();
-      if (message.length === 0) {
-        return;
-      }
+        const message = messageInput.value.trim();
+        if (message.length === 0) {
+            return;
+        }
 
-      const userMessage = document.createElement('div');
-      userMessage.classList.add('user');
-      userMessage.innerHTML = ` ${message}`;
-      messagesContainer.appendChild(userMessage);
+        // Create and append the user's message
+        const userMessage = document.createElement('div');
+        userMessage.classList.add('user-chat');
+        userMessage.innerHTML = `${message}`;
+        messagesContainer.appendChild(userMessage);
 
-      messageInput.value = '';
+        // Clear the input field
+        messageInput.value = '';
 
-      fetch('', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-          'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-          'message': message
+        // Send the message to the server
+        fetch('', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'message': message
+            })
         })
-      })
-      .then(response => response.json())
-      .then(data => {
-        const botResponse = document.createElement('div');
-        botResponse.classList.add('bot');
-        botResponse.innerHTML = ` ${data.response}`;
-        messagesContainer.appendChild(botResponse);
-      });
+        .then(response => response.json())
+        .then(data => {
+            // Create and append the bot's response
+            const botResponse = document.createElement('div');
+            botResponse.classList.add('ai-chat');
+            botResponse.innerHTML = `${data.response}`;
+            messagesContainer.appendChild(botResponse);
+        })
+        .catch(error => console.error('Error:', error));
     });
-  </script>
-
+</script>
 </body>
 </html>
